@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Co-op: Correspondence-based Novel Object Pose Estimation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/icon.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+<section class="hero">
+    <div class="hero-body" style="padding-bottom: 0;">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Co-op: Correspondence-based Novel Object Pose
+                        Estimation</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="https://www.linkedin.com/in/sungphill-moon-a4393313a/">Sungphill
+                                Moon</a>,</span>
+                        <span class="author-block">
+                            <a href="https://www.linkedin.com/in/hyeontae-son-933691152/">Hyeontae Son</a>,</span>
+                        <span class="author-block">
+                            <a href="https://www.linkedin.com/in/dongcheol-hur-752aba78/">Dongcheol Hur</a>,</span>
+                        <span class="author-block">
+                            <a href="https://www.linkedin.com/in/sang-wook-kim-224464190/">Sangwook Kim</a>,</span>
+
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">NAVER LABS</span>
+                    </div>
+
+                    <h3 class="text-dark" style="font-size: calc(12px + 0.5vw);">CVPR 2025</h3>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                                <a href="https://arxiv.org/pdf/2503.17731"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://arxiv.org/abs/2503.17731"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </span>
+                            <!-- Video Link. -->
+                            <!-- <span class="link-block">
+                                <a href="https://www.youtube.com/"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-youtube"></i>
+                                    </span>
+                                    <span>Video(Coming soon!)</span>
+                                </a>
+                            </span> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="padding-top: 1rem;">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We propose <b>Co-op</b>, a novel method for accurately and robustly estimating the 6DoF pose of
+                        objects unseen during training from a single RGB image.
+                        Our method requires only the CAD model of the target object and can precisely estimate its
+                        pose without any additional fine-tuning.
+                        While existing model-based methods suffer from inefficiency due to using a large number of
+                        templates, our method enables fast and accurate estimation with a small number of templates.
+                        This improvement is achieved by finding semi-dense correspondences between the input image
+                        and the pre-rendered templates.
+                        Our method achieves strong generalization performance by leveraging a hybrid representation
+                        that combines patch-level classification and offset regression.
+                        Additionally, our pose refinement model estimates probabilistic flow between the input image
+                        and the rendered image, refining the initial estimate to an accurate pose using a differentiable PnP layer.
+                        We demonstrate that our method not only estimates object poses rapidly but also outperforms
+                        existing methods by a large margin on the seven core datasets of the BOP Challenge, achieving
+                        state-of-the-art accuracy.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Video</h2>
+                <div class="publication-video">
+                    <iframe src="https://www.youtube.com/embed/vFilwFxFdYw?rel=0&amp;showinfo=0" frameborder="0"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <!--/ Paper video. -->
+
+        <!--/ Method. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Method</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We estimate object pose through two main stages. In the Coarse Pose Estimation stage, we estimate semi-dense
+                        correspondences between the query image and templates and compute the initial pose using PnP. In the Pose Refinement
+                        stage, we refine the initial pose by estimating dense flow between the query and rendered images. Both stages utilize
+                        transformer encoders
+                        and decoders with identical structures, with the Pose Refinement stage additionally incorporating a DPT module after the
+                        decoder for dense
+                        prediction
+                    </p>
+                </div>
+
+                <div class="content has-text-centered">
+                    <img id="architecture-img" src="./static/images/overview_figure.png" alt="Architecture">
+                </div>
+            </div>
+        </div>
+        <!--/ Method. -->
+    </div>
+</section>
+
+<section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container">
+            <div class="column has-text-centered">
+                <h2 class="title is-3">Co-op in Action: Custom Object Results</h2>
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-000001">
+                        <video poster="" id="000001" autoplay controls muted loop playsinline height="100%">
+                        <source src="./static/results/000001.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-000002">
+                        <video poster="" id="000002" autoplay controls muted loop playsinline height="100%">
+                        <source src="./static/results/000002.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-000003">
+                        <video poster="" id="000003" autoplay controls muted loop playsinline height="100%">
+                        <source src="./static/results/000002.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-000004">
+                        <video poster="" id="000004" autoplay controls muted loop playsinline height="100%">
+                        <source src="./static/results/000002.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">Coarse Estimation</h2>
+                <div style="padding-top: 5px; padding-bottom: 5px">
+                    <video width="33%" autoplay loop controls preload="auto" muted><source src="static/coarse/000001.mp4" type="video/mp4"></video>
+                    <video width="33%" autoplay loop controls preload="auto" muted><source src="static/coarse/000002.mp4" type="video/mp4"></video>
+                    <video width="33%" autoplay loop controls preload="auto" muted><source src="static/coarse/000002.mp4" type="video/mp4"></video>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">Refinement</h2>
+                <div style="padding-top: 5px; padding-bottom: 5px">
+                    <video width="100%" autoplay loop controls preload="auto" muted><source src="static/refine/000001.mp4" type="video/mp4"></video>
+                    <video width="100%" autoplay loop controls preload="auto" muted><source src="static/refine/000002.mp4" type="video/mp4"></video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{moon2025co,
+    title   = {Co-op: Correspondence-based Novel Object Pose Estimation},
+    author  = {Moon, Sungphill and Son, Hyeontae and Hur, Dongcheol and Kim, Sangwook},
+    journal = {CVPR},
+    year    = {2025}
+  }</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This webpage template is adapted from <a
+                            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
+                        under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0
+                            License</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
